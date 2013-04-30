@@ -180,7 +180,10 @@
 ;; point-undo
 ;; ƒJ[ƒ\ƒ‹‚ÌˆÚ“®—š—ğ
 
-
+(when (require 'point-undo nil t)
+  (define-key global-map "\M-[" 'point-undo)
+  (define-key global-map "\M-]" 'point-redo)
+)
 
 ;; --------------------------------------------------
 ;; undo-tree
