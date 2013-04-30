@@ -156,8 +156,19 @@
 (set-frame-parameter nil 'alpha 90)
 
 ;; --------------------------------------------------
+;; auto-install
+;; Elispインストール支援
+
+(when (require 'auto-install nil t)
+  (setq auto-install-directory "~/.emacs.d/site-elisp/")
+  (auto-install-update-emacswiki-package-name t)
+  (setq url-proxy-services '(("http" . "localhost:8339")))
+  (auto-install-compatibility-setup))
+
+;; --------------------------------------------------
 ;; auto-complete-mode
 ;; 自動補完機能
+
 (require 'auto-complete)
 (require 'auto-complete-config)
 (global-auto-complete-mode t)
