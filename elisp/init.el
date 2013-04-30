@@ -81,6 +81,9 @@
 ;; M-y: anything-show-kill-ring
 (define-key global-map "\M-y" 'anything-show-kill-ring)
 
+;; C-t: ウィンドウの切り替え (本来はtranspose-chars)
+(define-key global-map "\C-t" 'other-window)
+
 ;; --------------------------------------------------
 ;; グラフィック設定
 
