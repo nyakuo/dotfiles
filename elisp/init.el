@@ -78,6 +78,9 @@
 (cua-mode t)
 (setq cua-enable-cua-keys nil)
 
+;; M-y: anything-show-kill-ring
+(define-key global-map "\M-y" 'anything-show-kill-ring)
+
 ;; --------------------------------------------------
 ;; グラフィック設定
 
@@ -172,6 +175,22 @@
 (require 'auto-complete)
 (require 'auto-complete-config)
 (global-auto-complete-mode t)
+
+;; --------------------------------------------------
+;; point-undo
+;; カーソルの移動履歴
+
+
+
+;; --------------------------------------------------
+;; undo-tree
+;; Undoの分岐履歴
+;; Note: C-x u で起動し，履歴ツリーを移動．
+;;       適当な場所でqをタイプし終了
+;;       tで樹形図と時間表示を切り替えることができる
+
+(when (require 'undo-tree nil t)
+  (global-undo-tree-mode))
 
 ;; --------------------------------------------------
 ;; redo+
