@@ -162,7 +162,6 @@
 (when (require 'auto-install nil t)
   (setq auto-install-directory "~/.emacs.d/elisp/")
   (auto-install-update-emacswiki-package-name t)
-  (setq url-proxy-services '(("http" . "localhost:8339")))
   (auto-install-compatibility-setup))
 
 ;; --------------------------------------------------
@@ -172,6 +171,15 @@
 (require 'auto-complete)
 (require 'auto-complete-config)
 (global-auto-complete-mode t)
+
+;; --------------------------------------------------
+;; redo+
+;; Redo機能
+
+;; Redo機能のキーバインドの設定
+(when (require 'redo+ nil t)
+  (global-set-key (kbd "C-.") 'redo)
+)
 
 ;; --------------------------------------------------
 ;; verilog-mode 
