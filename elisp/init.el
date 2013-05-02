@@ -4,6 +4,9 @@
 ;; common lisp
 (require 'cl)
 
+;; ローカル設定を読み込む
+(load "local_setting")
+
 ;; 文字コード
 ;; note: win と mac で環境を分けている
 (set-language-environment "Japanese")
@@ -52,18 +55,6 @@
 
 ;; 暫定マークモード
 (transient-mark-mode t)
-
-;; デフォルト作業ディレクトリの変更
-;; Note: 作業するマシンによってアドレスを変更すること
-(cd "C:/Users/Takahiro/Desktop")
-
-;; デフォルトのフレーム位置・座標
-(setq default-frame-alist
-      (append '((top . 0)
-                (left . 0)
-                (height . 65)
-                (width . 116)
-                ) initial-frame-alist))
 
 ;; --------------------------------------------------
 ;; キーバインド
