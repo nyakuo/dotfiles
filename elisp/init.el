@@ -1,14 +1,14 @@
 ;; --------------------------------------------------
-;; Šî–{İ’è
+;; åŸºæœ¬è¨­å®š
 
 ;; common lisp
 (require 'cl)
 
-;; ƒ[ƒJƒ‹İ’è‚ğ“Ç‚İ‚Ş
+;; ãƒ­ãƒ¼ã‚«ãƒ«è¨­å®šã‚’èª­ã¿è¾¼ã‚€
 (load "local_setting")
 
-;; •¶šƒR[ƒh
-;; note: win ‚Æ mac ‚ÅŠÂ‹«‚ğ•ª‚¯‚Ä‚¢‚é
+;; æ–‡å­—ã‚³ãƒ¼ãƒ‰
+;; note: win ã¨ mac ã§ç’°å¢ƒã‚’åˆ†ã‘ã¦ã„ã‚‹
 (set-language-environment "Japanese")
 (let ((ws window-system))
   (cond ((eq ws 'w64)
@@ -22,42 +22,42 @@
          (setq file-name-coding-system 'utf-8-hfs)
          (setq locale-coding-system 'utf-8-hfs))))
 
-;; ƒtƒHƒ“ƒgİ’è
+;; ãƒ•ã‚©ãƒ³ãƒˆè¨­å®š
 ;; Win: Meiryo
 ;; Mac: Ricty
 (let ((ws window-system))
   (cond ((eq ws 'w64)
          (set-face-attribute 'default nil
-                             :family "Menlo"  ;; ‰p”
+                             :family "ãƒ¡ã‚¤ãƒªã‚ª"  ;; è‹±æ•°
                              :height 100)
-         (set-fontset-font nil 'japanese-jisx0208 (font-spec :family "Menlo")))  ;; “ú–{Œê
+         (set-fontset-font nil 'japanese-jisx0208 (font-spec :family "ãƒ¡ã‚¤ãƒªã‚ª")))  ;; æ—¥æœ¬èª
         ((eq ws 'ns)
          (set-face-attribute 'default nil
-                             :family "Menlo"  ;; ‰p”
+                             :family "ãƒ¡ã‚¤ãƒªã‚ª"  ;; è‹±æ•°
                              :height 140)
-         (set-fontset-font nil 'japanese-jisx0208 (font-spec :family "Menlo")))))  ;; “ú–{Œê
+         (set-fontset-font nil 'japanese-jisx0208 (font-spec :family "ãƒ¡ã‚¤ãƒªã‚ª")))))  ;; æ—¥æœ¬èª
 
 
-;; ƒXƒ^[ƒgƒAƒbƒv‚Ì”ñ•\¦
+;; ã‚¹ã‚¿ãƒ¼ãƒˆã‚¢ãƒƒãƒ—ã®éè¡¨ç¤º
 (setq inhibit-startup-screen t)
 
-;; scratch‚Ì‰ŠúƒƒbƒZ[ƒW‚ÌÁ‹
+;; scratchã®åˆæœŸãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã®æ¶ˆå»
 (setq initial-scratch-message "")
 
-;; ƒ^ƒu‚ğƒXƒy[ƒX‚É•ÏŠ·
+;; ã‚¿ãƒ–ã‚’ã‚¹ãƒšãƒ¼ã‚¹ã«å¤‰æ›
 (setq-default indent-tabs-mode nil)
 
-;; ƒ^ƒu•‚Ìw’è
+;; ã‚¿ãƒ–å¹…ã®æŒ‡å®š
 (custom-set-variables '(tab-width 4))
 
-;; ƒoƒbƒNƒAƒbƒvƒtƒ@ƒCƒ‹‚ğì‚ç‚È‚¢
+;; ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ä½œã‚‰ãªã„
 (setq make-backup-files nil)
 
-;; b’èƒ}[ƒNƒ‚[ƒh
+;; æš«å®šãƒãƒ¼ã‚¯ãƒ¢ãƒ¼ãƒ‰
 (transient-mark-mode t)
 
 ;; --------------------------------------------------
-;; ƒL[ƒoƒCƒ“ƒh
+;; ã‚­ãƒ¼ãƒã‚¤ãƒ³ãƒ‰
 
 ;; C-h: backspace
 (global-set-key "\C-h" 'delete-backward-char)
@@ -65,53 +65,53 @@
 ;; M-g: goto-line
 (global-set-key "\M-g" 'goto-line)
 
-;; C-Return: ‹éŒ`‘I‘ğ
+;; C-Return: çŸ©å½¢é¸æŠ
 (cua-mode t)
 (setq cua-enable-cua-keys nil)
 
 ;; M-y: anything-show-kill-ring
 (define-key global-map "\M-y" 'anything-show-kill-ring)
 
-;; C-t: ƒEƒBƒ“ƒhƒE‚ÌØ‚è‘Ö‚¦ (–{—ˆ‚Ítranspose-chars)
+;; C-t: ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã®åˆ‡ã‚Šæ›¿ãˆ (æœ¬æ¥ã¯transpose-chars)
 (define-key global-map "\C-t" 'other-window)
 
 ;; --------------------------------------------------
-;; ƒOƒ‰ƒtƒBƒbƒNİ’è
+;; ã‚°ãƒ©ãƒ•ã‚£ãƒƒã‚¯è¨­å®š
 
-;; ‘Î‰ƒJƒbƒR‚ğƒnƒCƒ‰ƒCƒg•\¦
+;; å¯¾å¿œã‚«ãƒƒã‚³ã‚’ãƒã‚¤ãƒ©ã‚¤ãƒˆè¡¨ç¤º
 (show-paren-mode t)
 (setq show-paren-style 'expression)
 (setq show-paren-delay 0)
 (set-face-background 'show-paren-match-face "Pink")
 (set-face-foreground 'show-paren-match-face "Blue")
 
-;; “ú–{Œê“ü—Í‚ÌON/OFF‚ÅƒJ[ƒ\ƒ‹‚ÌF‚ğ•Ï‚¦‚é
+;; æ—¥æœ¬èªå…¥åŠ›ã®ON/OFFã§ã‚«ãƒ¼ã‚½ãƒ«ã®è‰²ã‚’å¤‰ãˆã‚‹
 (add-hook 'mw32-ime-on-hook
 	  (function(lambda() (set-cursor-color "Pink"))))
 (add-hook 'wm32-ime-off-hook
 	  (function(lambda() (set-cursor-color "Green"))))
 
-;; ƒ^ƒCƒgƒ‹ƒo[‚Éƒtƒ@ƒCƒ‹‚Ìƒtƒ‹ƒpƒX‚ğ•\¦
+;; ã‚¿ã‚¤ãƒˆãƒ«ãƒãƒ¼ã«ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ•ãƒ«ãƒ‘ã‚¹ã‚’è¡¨ç¤º
 (setq frame-title-format
       (format "%%f - Emacs@%s" (system-name)))
 
-;; s”Ô†‚Ì•\¦
+;; è¡Œç•ªå·ã®è¡¨ç¤º
 (global-linum-mode t)
 (set-face-attribute 'linum nil
 		    :foreground "Green"
 		    :background "Black"
 		    :height 0.9)
 
-;; sŠÔ
+;; è¡Œé–“
 (setq-default line-spacing 0)
 
-;; ƒ‚[ƒhƒ‰ƒCƒ“‚És”Ô†‚ğ•\¦
+;; ãƒ¢ãƒ¼ãƒ‰ãƒ©ã‚¤ãƒ³ã«è¡Œç•ªå·ã‚’è¡¨ç¤º
 (line-number-mode t)
 
-;; ƒ‚[ƒhƒ‰ƒCƒ“‚É—ñ”Ô†‚ğ•\¦
+;; ãƒ¢ãƒ¼ãƒ‰ãƒ©ã‚¤ãƒ³ã«åˆ—ç•ªå·ã‚’è¡¨ç¤º
 (column-number-mode t)
 
-;; ƒ‚[ƒhƒ‰ƒCƒ“‚ÌŠ„‡•\¦‚ğ‘s”•\¦‚É•ÏX
+;; ãƒ¢ãƒ¼ãƒ‰ãƒ©ã‚¤ãƒ³ã®å‰²åˆè¡¨ç¤ºã‚’ç·è¡Œæ•°è¡¨ç¤ºã«å¤‰æ›´
 (defvar my-lines-page-mode t)
 (defvar my-mode-line-format)
 
@@ -130,31 +130,31 @@
         '(:eval (format my-mode-line-format
                         (count-lines (point-max) (point-min))))))
 
-;; ƒJƒ‰[ƒe[ƒ}
+;; ã‚«ãƒ©ãƒ¼ãƒ†ãƒ¼ãƒ
 ;; http://code/google/com/p/gnuemacscolorthemetest/
 (when (and (require 'color-theme nil t) (window-system))
   (color-theme-initialize)
   (color-theme-comidia))
 
-;; ƒƒjƒ…[ƒo[‚Ì”ñ•\¦
+;; ãƒ¡ãƒ‹ãƒ¥ãƒ¼ãƒãƒ¼ã®éè¡¨ç¤º
 (menu-bar-mode -1)
 
-;; ƒc[ƒ‹ƒo[‚Ì”ñ•\¦
+;; ãƒ„ãƒ¼ãƒ«ãƒãƒ¼ã®éè¡¨ç¤º
 (tool-bar-mode -1)
 
-;; ƒXƒNƒ[ƒ‹ƒo[‚Ì”ñ•\¦
+;; ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ãƒãƒ¼ã®éè¡¨ç¤º
 (toggle-scroll-bar nil)
 
-;; Œ»İs‚ğƒnƒCƒ‰ƒCƒg
+;; ç¾åœ¨è¡Œã‚’ãƒã‚¤ãƒ©ã‚¤ãƒˆ
 (global-hl-line-mode t)
 (setq hl-line-face 'underline)
 
-;; ”wŒi‚Ì“§‰ß
+;; èƒŒæ™¯ã®é€é
 (set-frame-parameter nil 'alpha 90)
 
 ;; --------------------------------------------------
 ;; auto-install
-;; ElispƒCƒ“ƒXƒg[ƒ‹x‰‡
+;; Elispã‚¤ãƒ³ã‚¹ãƒˆãƒ¼ãƒ«æ”¯æ´
 
 (when (require 'auto-install nil t)
   (setq auto-install-directory "~/.emacs.d/elisp/")
@@ -164,7 +164,7 @@
 
 ;; --------------------------------------------------
 ;; auto-complete-mode
-;; ©“®•âŠ®‹@”\
+;; è‡ªå‹•è£œå®Œæ©Ÿèƒ½
 
 (require 'auto-complete)
 (require 'auto-complete-config)
@@ -172,7 +172,7 @@
 
 ;; --------------------------------------------------
 ;; point-undo
-;; ƒJ[ƒ\ƒ‹‚ÌˆÚ“®—š—ğ
+;; ã‚«ãƒ¼ã‚½ãƒ«ã®ç§»å‹•å±¥æ­´
 
 (when (require 'point-undo nil t)
   (define-key global-map "\M-[" 'point-undo)
@@ -181,41 +181,41 @@
 
 ;; --------------------------------------------------
 ;; undo-tree
-;; Undo‚Ì•ªŠò—š—ğ
-;; Note: C-x u ‚Å‹N“®‚µC—š—ğƒcƒŠ[‚ğˆÚ“®D
-;;       “K“–‚ÈêŠ‚Åq‚ğƒ^ƒCƒv‚µI—¹
-;;       t‚Å÷Œ`}‚ÆŠÔ•\¦‚ğØ‚è‘Ö‚¦‚é‚±‚Æ‚ª‚Å‚«‚é
+;; Undoã®åˆ†å²å±¥æ­´
+;; Note: C-x u ã§èµ·å‹•ã—ï¼Œå±¥æ­´ãƒ„ãƒªãƒ¼ã‚’ç§»å‹•ï¼
+;;       é©å½“ãªå ´æ‰€ã§qã‚’ã‚¿ã‚¤ãƒ—ã—çµ‚äº†
+;;       tã§æ¨¹å½¢å›³ã¨æ™‚é–“è¡¨ç¤ºã‚’åˆ‡ã‚Šæ›¿ãˆã‚‹ã“ã¨ãŒã§ãã‚‹
 
 (when (require 'undo-tree nil t)
   (global-undo-tree-mode))
 
 ;; --------------------------------------------------
 ;; redo+
-;; Redo‹@”\
+;; Redoæ©Ÿèƒ½
 
-;; Redo‹@”\‚ÌƒL[ƒoƒCƒ“ƒh‚Ìİ’è
+;; Redoæ©Ÿèƒ½ã®ã‚­ãƒ¼ãƒã‚¤ãƒ³ãƒ‰ã®è¨­å®š
 (when (require 'redo+ nil t)
   (global-set-key (kbd "C-.") 'redo)
 )
 
 ;; --------------------------------------------------
-;; Anything (Œó•â‘I‘ğŒ^ƒCƒ“ƒ^ƒtƒF[ƒX)
+;; Anything (å€™è£œé¸æŠå‹ã‚¤ãƒ³ã‚¿ãƒ•ã‚§ãƒ¼ã‚¹)
 
 (when (require 'anything nil t)
   (setq
-   ;; Œó•â‚ğ•\¦‚·‚é‚Ü‚Å‚ÌŠÔ
+   ;; å€™è£œã‚’è¡¨ç¤ºã™ã‚‹ã¾ã§ã®æ™‚é–“
    anything-idle-delay 0.3
 
-   ;; ƒ^ƒCƒv‚µ‚ÄÄ•`‰æ‚·‚é‚Ü‚Å‚ÌŠÔ
+   ;; ã‚¿ã‚¤ãƒ—ã—ã¦å†æç”»ã™ã‚‹ã¾ã§ã®æ™‚é–“
    anything-input-idle-delay 0.2
 
-   ;; Œó•â‚ÌÅ‘å•\¦”
+   ;; å€™è£œã®æœ€å¤§è¡¨ç¤ºæ•°
    anything-candiate-number-limit 100
 
-   ;; Œó•â‚ª‘½‚¢‚É‘ÌŠ´‘¬“x‚ğ‘‚­‚·‚é
+   ;; å€™è£œãŒå¤šã„æ™‚ã«ä½“æ„Ÿé€Ÿåº¦ã‚’æ—©ãã™ã‚‹
    anything-quick-update t
 
-   ;; Œó•â‘I‘ğƒVƒ‡[ƒgƒJƒbƒg‚ğƒAƒ‹ƒtƒ@ƒxƒbƒg‚É
+   ;; å€™è£œé¸æŠã‚·ãƒ§ãƒ¼ãƒˆã‚«ãƒƒãƒˆã‚’ã‚¢ãƒ«ãƒ•ã‚¡ãƒ™ãƒƒãƒˆã«
    anything-enable-shortcuts 'alphabet)
 
 (when (require 'anything-config nil t)
@@ -228,7 +228,7 @@
   (require 'anything-migemo nil t))
 
 (when (require 'anything-complete nil t)
-  ;; lispƒVƒ“ƒ{ƒ‹‚Ì•âŠ®Œó•â‚ÌÄŒŸõŠÔ
+  ;; lispã‚·ãƒ³ãƒœãƒ«ã®è£œå®Œå€™è£œã®å†æ¤œç´¢æ™‚é–“
   (anything-lisp-complete-symbol-set-timer 150))
 
 (require 'anything-show-completion nil t)
@@ -237,13 +237,13 @@
   (require 'anything-auto-install nil t))
 
 (when (require 'descbinds-anything nil t)
-  ;; describe-bindings‚ğAnything‚É’u‚«Š·‚¦‚é
+  ;; describe-bindingsã‚’Anythingã«ç½®ãæ›ãˆã‚‹
   (descbinds-anything-install)))
 
 
 ;; --------------------------------------------------
 ;; verilog-mode 
-;; VerilogHDL(.vƒtƒ@ƒCƒ‹)
+;; VerilogHDL(.vãƒ•ã‚¡ã‚¤ãƒ«)
 
 ;; Load verilog-mode only when needed
 (autoload 'verilog-mode "verilog-mode" "verilog mode" t)
@@ -260,7 +260,7 @@
 
 ;; --------------------------------------------------
 ;; C# mode
-;; .csƒtƒ@ƒCƒ‹
+;; .csãƒ•ã‚¡ã‚¤ãƒ«
 
 (autoload 'csharp-mode "csharp-mode" "Major mode for editing C# code." t)
 (setq auto-mode-alist (cons '("\\.cs$" . csharp-mode) auto-mode-alist))
@@ -282,9 +282,9 @@
 
 ;; --------------------------------------------------
 ;; YaTeX (LaTeX)
-;; .texƒtƒ@ƒCƒ‹
+;; .texãƒ•ã‚¡ã‚¤ãƒ«
 
-;; ƒGƒ“ƒR[ƒfƒBƒ“ƒO‚ğutf-8‚É‚·‚é
+;; ã‚¨ãƒ³ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚’utf-8ã«ã™ã‚‹
 (setq YaTeX-kanji-code 4)
 
 (add-to-list 'load-path "~/.emacs.d/site-lisp/yatex")
