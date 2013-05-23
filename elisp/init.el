@@ -48,7 +48,10 @@
 (setq-default indent-tabs-mode nil)
 
 ;; タブ幅の指定
-(custom-set-variables '(tab-width 4))
+(setq-default tab-width 2)
+(setq default-tab-width 2)
+(setq tab-stop-list
+      '(2 4 6 8 10 12 14 16 18 20 22 24))
 
 ;; バックアップファイルを作らない
 (setq make-backup-files nil)
