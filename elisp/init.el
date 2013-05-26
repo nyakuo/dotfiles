@@ -30,12 +30,12 @@
          (set-face-attribute 'default nil
                              :family "Menlo"  ;; 英数
                              :height 100)
-         (set-fontset-font nil 'japanese-jisx0208 (font-spec :family "Menlo")))  ;; 日本語
+         (set-fontset-font nil 'japanese-jisx0208 (font-spec :family "Meiryo")))  ;; 日本語
         ((eq ws 'ns)
          (set-face-attribute 'default nil
-                             :family "Menlo"  ;; 英数
+                             :family "Ricty"  ;; 英数
                              :height 140)
-         (set-fontset-font nil 'japanese-jisx0208 (font-spec :family "Menlo")))))  ;; 日本語
+         (set-fontset-font nil 'japanese-jisx0208 (font-spec :family "Ricty")))))  ;; 日本語
 
 
 ;; スタートアップの非表示
@@ -151,29 +151,6 @@
 
 ;; 背景の透過
 (set-frame-parameter nil 'alpha 90)
-
-;; 文字色
-(setq sdic-face-color "pink")
-
-;; ;; --------------------------------------------------
-;; ;; SDICT
-;; ;; 辞書
-
-;; ;; 使用する辞書ファイルの設定
-;; (setq sdic-eiwa-dictionary-list
-;;       '(
-;;         (sdicf-client "~/.emacs.d/dict/gane")
-;;         ))
-;; (setq sdic-waei-dictionary-list
-;;       '(
-;;         (sdicf-client "~/.emacs.d/dict/jedict")
-;;         ))
-
-;; (autoload 'sdic-describe-word "sdic" "英単語の意味を調べる" t nil)
-;; (global-set-key "\C-cw" 'sdic-describe-word)
-
-;; (autoload 'sdic-describe-word-at-point "sdic" "カーソル位置の英単語の意味を調べる" t nil)
-;; (global-set-key "\C-cW" 'sdic-describe-word-at-point)
 
 ;; --------------------------------------------------
 ;; auto-install
