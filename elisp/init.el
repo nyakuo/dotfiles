@@ -9,7 +9,7 @@
 
 ;; 文字コード
 ;; note: win と mac で環境を分けている
-(set-language-environment "Japanese")
+(set-language-environment "utf-8")
 (let ((ws window-system))
   (cond ((eq ws 'w64)
          (prefer-coding-system 'utf-8-unix)
