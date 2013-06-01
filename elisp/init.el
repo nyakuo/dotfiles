@@ -9,7 +9,7 @@
 
 ;; 文字コード
 ;; note: win と mac で環境を分けている
-(set-language-environment "utf-8")
+(set-language-environment "Japanese")
 (let ((ws window-system))
   (cond ((eq ws 'w64)
          (prefer-coding-system 'utf-8-unix)
@@ -33,9 +33,9 @@
          (set-fontset-font nil 'japanese-jisx0208 (font-spec :family "メイリオ")))  ;; 日本語
         ((eq ws 'ns)
          (set-face-attribute 'default nil
-                             :family "メイリオ"  ;; 英数
+                             :family "Menlo"  ;; 英数
                              :height 140)
-         (set-fontset-font nil 'japanese-jisx0208 (font-spec :family "メイリオ")))))  ;; 日本語
+         (set-fontset-font nil 'japanese-jisx0208 (font-spec :family "Osaka")))))  ;; 日本語
 
 
 ;; スタートアップの非表示
