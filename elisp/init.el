@@ -7,21 +7,6 @@
 ;; ローカル設定を読み込む
 (load "local_setting")
 
-;; 文字コード
-;; note: win と mac で環境を分けている
-(set-language-environment "Japanese")
-(let ((ws window-system))
-  (cond ((eq ws 'w64)
-         (prefer-coding-system 'utf-8-unix)
-         (set-default-coding-systems 'utf-8-unix)
-         (setq file-name-coding-system 'sjis)
-         (setq locale-coding-system 'utf-8))
-        ((eq ws 'ns)
-         (require 'ucs-normalize)
-         (prefer-coding-system 'utf-8-hfs)
-         (setq file-name-coding-system 'utf-8-hfs)
-         (setq locale-coding-system 'utf-8-hfs))))
-
 ;; フォント設定
 ;; Win: Meiryo
 ;; Mac: Ricty
