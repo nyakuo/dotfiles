@@ -7,22 +7,6 @@
 ;; ローカル設定を読み込む
 (load "local_setting")
 
-;; フォント設定
-;; Win: Meiryo
-;; Mac: Ricty
-(let ((ws window-system))
-  (cond ((eq ws 'w64)
-         (set-face-attribute 'default nil
-                             :family "メイリオ"  ;; 英数
-                             :height 100)
-         (set-fontset-font nil 'japanese-jisx0208 (font-spec :family "メイリオ")))  ;; 日本語
-        ((eq ws 'ns)
-         (set-face-attribute 'default nil
-                             :family "Menlo"  ;; 英数
-                             :height 140)
-         (set-fontset-font nil 'japanese-jisx0208 (font-spec :family "Osaka")))))  ;; 日本語
-
-
 ;; スタートアップの非表示
 (setq inhibit-startup-screen t)
 
@@ -62,6 +46,9 @@
 
 ;; C-t: ウィンドウの切り替え (本来はtranspose-chars)
 (define-key global-map "\C-t" 'other-window)
+
+;; C-c c: compile コマンドを呼び出す
+(define-key mode-specific-map "c" 'compile)
 
 ;; --------------------------------------------------
 ;; グラフィック設定
