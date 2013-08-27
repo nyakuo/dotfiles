@@ -17,5 +17,5 @@
         ((eq ws 'x)
          (set-face-attribute 'default nil
                              :family "Ricty" ;; 英数
-                             :height 140)
+                             :height 130)
          (set-fontset-font nil 'japanese-jisx0208 (font-spec :family "Ricty")))))   ;; 日本語
