@@ -7,6 +7,9 @@
 ;; ローカル設定を読み込む
 (load "local_setting")
 
+;; wind_moveの有効
+(load "wind_move")
+
 ;; スタートアップの非表示
 (setq inhibit-startup-screen t)
 
@@ -147,7 +150,7 @@
 (setq hl-line-face 'underline)
 
 ;; 背景の透過
-;(set-frame-parameter nil 'alpha 90)
+(set-frame-parameter nil 'alpha 85)
 
 ;; --------------------------------------------------
 ;; auto-install
