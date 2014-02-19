@@ -294,8 +294,24 @@
 ;; --------------------------------------------------
 ;; php-mode (PHP)
 ;; .php
+
 (autoload 'php-mode "php-mode" "php mode" t)
 (require 'php-mode)
+
+;;--------------------------------------------------
+;; mmm-mode (html-helper-modeとphp-modeの協調動作)
+;; @note .phpファイルないの<?php - ?>内はphp-modeで
+;;       それ以外はhtml-helper-modeで処理される
+
+(require 'mmm-mode)
+(setq mmm-global-mode 'maybe)
+(mmm-add-mode-ext-class nil "\\.php?\\'" 'html-php)
+(mmm-add-classes
+ '((html-php
+    :submode php-mode
+    :front "<\\?\\(php\\)?"
+    :back "\\?>")))
+(add-to-list 'auto-mode-alist '("\\.php?\\'" . html-helper-mode))
 
 ;; --------------------------------------------------
 ;; YaTeX (LaTeX)
