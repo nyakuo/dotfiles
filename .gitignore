@@ -5,3 +5,4 @@ elisp/local_setting.el
 wget-log*
 
 *.elc
+elisp/*.elc

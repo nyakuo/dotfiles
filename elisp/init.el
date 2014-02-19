@@ -282,31 +282,19 @@
         hs-c-like-adjust-block-beginning)
       hs-special-modes-alist)
 
-
 ;; --------------------------------------------------
-;; web-mode (HTML,CSS,PHP,Javascript,Java/JSP,ASPX)
+;; html-helper-mode (HTML,PHP)
 ;; .html
 
-(autoload 'web-mode "web-mode" "Major mode for editing Web code." t)
-
-;; 適応する拡張子
-(add-to-list 'auto-mode-alist '("\\.phtml$"     . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl''.php$" . web-mode)) 
-(add-to-list 'auto-mode-alist '("\\.jsp$"       . web-mode)) 
-(add-to-list 'auto-mode-alist '("\\.as[cp]x$"   . web-mode)) 
-(add-to-list 'auto-mode-alist '("\\.erb$"       . web-mode)) 
-(add-to-list 'auto-mode-alist '("\\.html?$"     . web-mode)) 
-
-;; インデント幅
-(defun web-mode-hook ()
-  "hooks for Web mode."
-  (setq web-mode-html-offset   4)
-  (setq web-mode-css-offset    4)
-  (setq web-mode-script-offset 4)
-  (setq web-mode-php-offset    4)
-  (setq web-mode-java-offset   4)
-  (setq web-mode-asp-offset    4))
-(add-hook 'web-mode-hook 'web-mode-hook)
+(autoload 'html-helper-mode "html-helper-mode" "Yay HTML" t)
+(setq auto-mode-alist
+      (append
+       '(
+         '("\\.html$"  . html-helper-mode)
+         '("\\.htm"    . html-helper-mode)
+         '("\\.shtml$" . html-helper-mode)
+         '("\\.php"    . html-helper-mode)
+       ) auto-mode-alist))
 
 ;; --------------------------------------------------
 ;; YaTeX (LaTeX)
