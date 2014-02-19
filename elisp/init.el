@@ -283,18 +283,19 @@
       hs-special-modes-alist)
 
 ;; --------------------------------------------------
-;; html-helper-mode (HTML,PHP)
+;; html-helper-mode (HTML)
 ;; .html
 
 (autoload 'html-helper-mode "html-helper-mode" "Yay HTML" t)
-(setq auto-mode-alist
-      (append
-       '(
-         '("\\.html$"  . html-helper-mode)
-         '("\\.htm"    . html-helper-mode)
-         '("\\.shtml$" . html-helper-mode)
-         '("\\.php"    . html-helper-mode)
-       ) auto-mode-alist))
+(add-to-list 'auto-mode-alist '("\\.html$"  . html-helper-mode))
+(add-to-list 'auto-mode-alist '("\\.htm"    . html-helper-mode))
+(add-to-list 'auto-mode-alist '("\\.shtml$" . html-helper-mode))
+
+;; --------------------------------------------------
+;; php-mode (PHP)
+;; .php
+(autoload 'php-mode "php-mode" "php mode" t)
+(require 'php-mode)
 
 ;; --------------------------------------------------
 ;; YaTeX (LaTeX)
