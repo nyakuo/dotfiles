@@ -2,5 +2,6 @@ auto-save-list/*
 auto-save-list/**
 
 elisp/local_setting.el
+wget-log*
 
 *.elc
