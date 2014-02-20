@@ -314,6 +314,13 @@
 (add-to-list 'auto-mode-alist '("\\.php?\\'" . html-helper-mode))
 
 ;; --------------------------------------------------
+;; js2-mode (JavaScript)
+;; .js
+
+(autoload 'js2-mode "js2-mode" "js2-mode" t)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+
+;; --------------------------------------------------
 ;; YaTeX (LaTeX)
 ;; .texファイル
 
