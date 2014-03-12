@@ -134,8 +134,8 @@
          (set-fontset-font nil 'japanese-jisx0208 (font-spec :family "Osaka")))    ;; 日本語
         ((eq ws 'x)
          (set-face-attribute 'default nil
-                             :family "Ricty" ;; 英数
-                             :height 130)
+                             :family "Inconsolata" ;; 英数
+                             :height 135)
          (set-fontset-font nil 'japanese-jisx0208 (font-spec :family "Ricty")))))   ;; 日本語
 
 
@@ -319,6 +319,19 @@
 
 (autoload 'js2-mode "js2-mode" "js2-mode" t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+
+
+;; --------------------------------------------------
+;; cperl-mode (Perl)
+;; .pl;
+
+(defalias 'perl-mode 'cperl-mode)
+(setq auto-mode-alist (cons '("\\.t$" . cperl-mode) auto-mode-alist))
+
+; インデントの設定
+(add-hook 'cperl-mode-hock
+          '(lambda ()
+             (cperl-set-style "PerlStyle")))
 
 ;; --------------------------------------------------
 ;; YaTeX (LaTeX)
