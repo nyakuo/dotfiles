@@ -244,31 +244,6 @@
   (descbinds-anything-install)))
 
 ;; --------------------------------------------------
-;; outline-mode
-;; アウトラインエディタ (明示的に起動)
-
-; outline-modeで見出しを別ウィンドウに表示する
-; M-x outree で実行
-(defun outtree ()
-  (interactive)
-  (if 'outline-mode (outline-mode))
-  (hide-body)
-  (let* ((basename (princ (buffer-name)))
-         (newtmp (concat basename "-tree")))
-    (if (get-buffer newtmp)
-        (unless (get-buffer-window newtmp)
-            (split-window-vertically 10)
-            (switch-to-buffer newtmp)
-            (other-window 1))
-      (progn
-        (make-indirect-buffer (current-buffer) newtmp)
-        (split-window-vertically 10)
-        (switch-to-buffer newtmp)
-        (if 'outline-mode (outline-mode))
-        (hide-sublevels 1)
-        (other-window 1)))))
-
-;; --------------------------------------------------
 ;; verilog-mode 
 ;; VerilogHDL(.vファイル)
 
