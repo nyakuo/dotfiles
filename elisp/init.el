@@ -21,9 +21,7 @@
 
 ;; タブ幅の指定
 (setq-default tab-width 2)
-(setq default-tab-width 2)
-(setq tab-stop-list
-      '(2 4 6 8 10 12 14 16 18 20 22 24))
+(setq tab-stop-list '(2 4 6 8 10 12 14 16 18 20 22 24))
 
 ;; バックアップファイルを作らない
 (setq make-backup-files nil)
@@ -46,9 +44,6 @@
 ;; C-Return: 矩形選択
 (cua-mode t)
 (setq cua-enable-cua-keys nil)
-
-;; M-y: anything-show-kill-ring
-(define-key global-map "\M-y" 'anything-show-kill-ring)
 
 ;; C-t: ウィンドウの切り替え (本来はtranspose-chars)
 (define-key global-map "\C-t" 'other-window)
@@ -204,6 +199,19 @@
 ;; --------------------------------------------------
 ;; Anything (候補選択型インタフェース)
 
+;; C-; Anything呼び出しのキーバインドの設定
+(define-key global-map (kbd "C-;") 'anything)
+
+;; M-y kill-ring(コピペバッファ)の表示
+(define-key global-map "\M-y" 'anything-show-kill-ring)
+
+;; Anything呼び出しで表示する情報
+(setq anything-sources
+      '(anything-c-source-buffers+
+        anything-c-source-recentf
+        anything-c-source-files-in-current-dir
+        ))
+
 (when (require 'anything nil t)
   (setq
    ;; 候補を表示するまでの時間
@@ -285,10 +293,10 @@
 ;; html-helper-mode (HTML)
 ;; .html
 
-(autoload 'html-helper-mode "html-helper-mode" "Yay HTML" t)
-(add-to-list 'auto-mode-alist '("\\.html$"  . html-helper-mode))
-(add-to-list 'auto-mode-alist '("\\.htm"    . html-helper-mode))
-(add-to-list 'auto-mode-alist '("\\.shtml$" . html-helper-mode))
+;; (autoload 'html-helper-mode "html-helper-mode" "Yay HTML" t)
+;; (add-to-list 'auto-mode-alist '("\\.html$"  . html-helper-mode))
+;; (add-to-list 'auto-mode-alist '("\\.htm"    . html-helper-mode))
+;; (add-to-list 'auto-mode-alist '("\\.shtml$" . html-helper-mode))
 
 ;; --------------------------------------------------
 ;; php-mode (PHP)
