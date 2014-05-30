@@ -252,6 +252,55 @@
   (descbinds-anything-install)))
 
 ;; --------------------------------------------------
+;; hs-minor-mode
+;; C-\でソースコードを畳む
+
+(add-hook 'c-mode-hook
+          '(lambda ()
+             (hs-minor-mode 1)))
+(add-hook 'c++-mode-hook
+          '(lambda ()
+             (hs-minor-mode 1)))
+(add-hook 'csharp-mode-hook
+          '(lambda ()
+             (hs-minor-mode 1)))
+(add-hook 'ruby-mode-hook
+          '(lambda ()
+             (hs-minor-mode 1)))
+(add-hook 'verilog-mode-hook
+          '(lambda ()
+             (hs-minor-mode 1)))
+(add-hook 'f90-mode-hook
+          '(lambda ()
+             (hs-minor-mode 1)))
+(add-hook 'java-mode-hook
+          '(lambda ()
+             (hs-minor-mode 1)))
+(add-hook 'php-mode-hook
+          '(lambda ()
+             (hs-minor-mode 1)))
+(add-hook 'emacs-lisp-mode-hook
+          '(lambda ()
+             (hs-minor-mode 1)))
+(add-hook 'html-mode-hook
+          '(lambda ()
+             (hs-minor-mode 1)))
+(add-hook 'sgml-mode-hook
+          '(lambda ()
+             (hs-minor-mode 1)))
+(add-hook 'cperl-mode-hook
+          '(lambda ()
+             (hs-minor-mode 1)))
+(add-hook 'js2-mode-hook
+          '(lambda ()
+             (hs-minor-mode 1)))
+(add-hook 'yatex-mode-hook
+          '(lambda ()
+             (hs-minor-mode 1)))
+
+(define-key global-map (kbd "C-\\") 'hs-toggle-hiding)
+
+;; --------------------------------------------------
 ;; verilog-mode 
 ;; VerilogHDL(.vファイル)
 
@@ -288,15 +337,6 @@
         nil
         hs-c-like-adjust-block-beginning)
       hs-special-modes-alist)
-
-;; --------------------------------------------------
-;; html-helper-mode (HTML)
-;; .html
-
-;; (autoload 'html-helper-mode "html-helper-mode" "Yay HTML" t)
-;; (add-to-list 'auto-mode-alist '("\\.html$"  . html-helper-mode))
-;; (add-to-list 'auto-mode-alist '("\\.htm"    . html-helper-mode))
-;; (add-to-list 'auto-mode-alist '("\\.shtml$" . html-helper-mode))
 
 ;; --------------------------------------------------
 ;; php-mode (PHP)
