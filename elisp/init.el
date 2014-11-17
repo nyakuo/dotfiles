@@ -1,3 +1,7 @@
+;; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+;; 濁点が分離した場合
+;; 全体に対して usc-normalize-NFC-region
+;; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ;; --------------------------------------------------
 ;; 基本設定
 
@@ -10,30 +14,30 @@
 ;; wind_moveの有効
 (load "wind_move")
 
-;; スタートアップの非表示
+;; スタートアップの非表示
 (setq inhibit-startup-screen t)
 
-;; scratchの初期メッセージの消去
+;; scratchの初期メッセージの消去
 (setq initial-scratch-message "")
 
-;; タブをスペースに変換
+;; タブをスペースに変換
 (setq-default indent-tabs-mode nil)
 
-;; タブ幅の指定
+;; タブ幅の指定
 (setq-default tab-width 2)
 (setq tab-stop-list '(2 4 6 8 10 12 14 16 18 20 22 24))
 
-;; バックアップファイルを作らない
+;; バックアップファイルを作らない
 (setq make-backup-files nil)
 
-;; 暫定マークモード
+;; 暫定マークモード
 (transient-mark-mode t)
 
-;; バッファの自動再読み込み (更新)
+;; バッファの自動再読み込み (更新)
 (global-auto-revert-mode 1)
 
 ;; --------------------------------------------------
-;; キーバインド
+;; キーバインド
 
 ;; C-h: backspace
 (global-set-key "\C-h" 'delete-backward-char)
@@ -45,14 +49,14 @@
 (cua-mode t)
 (setq cua-enable-cua-keys nil)
 
-;; C-t: ウィンドウの切り替え (本来はtranspose-chars)
+;; C-t: ウィンドウの切り替え (本来はtranspose-chars)
 (define-key global-map "\C-t" 'other-window)
 
-;; C-c c: compile コマンドを呼び出す
+;; C-c c: compile コマンドを呼び出す
 (define-key mode-specific-map "c" 'compile)
 
 ;; --------------------------------------------------
-;; グラフィック設定
+;; グラフィック設定
 
 ;; 対応カッコをハイライト表示
 (show-paren-mode t)
@@ -61,33 +65,36 @@
 (set-face-background 'show-paren-match-face "Pink")
 (set-face-foreground 'show-paren-match-face "Blue")
 
-;; 日本語入力のON/OFFでカーソルの色を変える
+;; 日本語入力のON/OFFでカーソルの色を変える
 (add-hook 'mw32-ime-on-hook
-	  (function(lambda() (set-cursor-color "Pink"))))
+          (function(lambda() (set-cursor-color "Pink"))))
 (add-hook 'wm32-ime-off-hook
-	  (function(lambda() (set-cursor-color "Green"))))
+          (function(lambda() (set-cursor-color "Green"))))
 
-;; タイトルバーにファイルのフルパスを表示
+;; タイトルバーにファイルのフルパスを表示
 (setq frame-title-format
       (format "%%f - Emacs@%s" (system-name)))
 
 ;; 行番号の表示
 (global-linum-mode t)
 (set-face-attribute 'linum nil
-		    :foreground "Green"
-		    :background "Black"
-		    :height 0.9)
+                    :foreground "Green"
+                    :background "Black"
+                    :height 0.9)
+(setq linum-delay t)
+(defadvice linum-schedule (around my-linum-schedule () activate)
+  (run-with-idle-timer 0.2 nil #'linum-update-current))
 
 ;; 行間
 (setq-default line-spacing 0)
 
-;; モードラインに行番号を表示
+;; モードラインに行番号を表示
 (line-number-mode t)
 
-;; モードラインに列番号を表示
+;; モードラインに列番号を表示
 (column-number-mode t)
 
-;; モードラインの割合表示を総行数表示に変更
+;; モードラインの割合表示を総行数表示に変更
 (defvar my-lines-page-mode t)
 (defvar my-mode-line-format)
 
@@ -106,9 +113,14 @@
         '(:eval (format my-mode-line-format
                         (count-lines (point-max) (point-min))))))
 
-(setq linum-delay t)
-(defadvice linum-schedule (around my-linum-schedule () activate)
-  (run-with-idle-timer 0.2 nil #'linum-update-current))
+
+;; 行末の余計なスペースのハイライト表示
+(setq-default show-trailing-whitespace t)
+(add-hook 'font-lock-mode-hook
+          (lambda()
+            (font-lock-add-keywords
+             nil
+             '(("\t" 0 'trailing-whitespace prepend)))))
 
 ;; カラーテーマ
 ;; http://code/google/com/p/gnuemacscolorthemetest/
@@ -138,13 +150,13 @@
          (set-fontset-font nil 'japanese-jisx0208 (font-spec :family "Ricty")))))   ;; 日本語
 
 
-;; メニューバーの非表示
+;; メニューバーの非表示
 (menu-bar-mode -1)
 
-;; ツールバーの非表示
+;; ツールバーの非表示
 (tool-bar-mode -1)
 
-;; スクロールバーの非表示
+;; スクロールバーの非表示
 (toggle-scroll-bar nil)
 
 ;; 現在行をハイライト
@@ -154,14 +166,14 @@
 ;; 背景の透過
 (set-frame-parameter nil 'alpha 85)
 
-;; マウスホイールでスクロール
+;; マウスホイールでスクロール
 (defun scroll-down-with-lines ()
   "" (interactive) (scroll-down 1))
 (defun scroll-up-with-lines ()
    "" (interactive) (scroll-up 1))
 (global-set-key [wheel-up] 'scroll-down-with-lines)
 (global-set-key [wheel-down] 'scroll-up-with-lines)
-;; スクロールステップ 1 に設定
+;; スクロールステップ 1 に設定
 (setq scroll-step 1)
 
 ;; --------------------------------------------------
@@ -194,9 +206,9 @@
 ;; --------------------------------------------------
 ;; undo-tree
 ;; Undoの分岐履歴
-;; Note: C-x u で起動し，履歴ツリーを移動．
-;;       適当な場所でqをタイプし終了
-;;       tで樹形図と時間表示を切り替えることができる
+;; Note: C-x u で起動し，履歴ツリーを移動．
+;;       適当な場所でqをタイプし終了
+;;       tで樹形図と時間表示を切り替えることができる
 
 (when (require 'undo-tree nil t)
   (global-undo-tree-mode))
@@ -205,7 +217,7 @@
 ;; redo+
 ;; Redo機能
 
-;; Redo機能のキーバインドの設定
+;; Redo機能のキーバインドの設定
 (when (require 'redo+ nil t)
   (global-set-key (kbd "C-.") 'redo)
 )
@@ -213,13 +225,13 @@
 ;; --------------------------------------------------
 ;; Anything (候補選択型インタフェース)
 
-;; C-; Anything呼び出しのキーバインドの設定
+;; C-; Anything呼び出しのキーバインドの設定
 (define-key global-map (kbd "C-;") 'anything)
 
-;; M-y kill-ring(コピペバッファ)の表示
+;; M-y kill-ring(コピペバッファ)の表示
 (define-key global-map "\M-y" 'anything-show-kill-ring)
 
-;; Anything呼び出しで表示する情報
+;; Anything呼び出しで表示する情報
 (setq anything-sources
       '(anything-c-source-buffers+
         anything-c-source-recentf
@@ -228,19 +240,19 @@
 
 (when (require 'anything nil t)
   (setq
-   ;; 候補を表示するまでの時間
+   ;; 候補を表示するまでの時間
    anything-idle-delay 0.3
 
-   ;; タイプして再描画するまでの時間
+   ;; タイプして再描画するまでの時間
    anything-input-idle-delay 0.2
 
    ;; 候補の最大表示数
    anything-candiate-number-limit 100
 
-   ;; 候補が多い時に体感速度を早くする
+   ;; 候補が多い時に体感速度を早くする
    anything-quick-update t
 
-   ;; 候補選択ショートカットをアルファベットに
+   ;; 候補選択ショートカットをアルファベットに
    anything-enable-shortcuts 'alphabet)
 
 (when (require 'anything-config nil t)
@@ -253,7 +265,7 @@
   (require 'anything-migemo nil t))
 
 (when (require 'anything-complete nil t)
-  ;; lispシンボルの補完候補の再検索時間
+  ;; lispシンボルの補完候補の再検索時間
   (anything-lisp-complete-symbol-set-timer 150))
 
 (require 'anything-show-completion nil t)
@@ -267,7 +279,7 @@
 
 ;; --------------------------------------------------
 ;; hs-minor-mode
-;; C-\でソースコードを畳む
+;; C-\でソースコードを畳む
 
 (add-hook 'c-mode-hook
           '(lambda ()
@@ -315,21 +327,31 @@
 (define-key global-map (kbd "C-\\") 'hs-toggle-hiding)
 
 ;; --------------------------------------------------
-;; verilog-mode 
-;; VerilogHDL(.vファイル)
+;; org-mode (.orgファイル)
 
-;; Load verilog-mode only when needed
-(autoload 'verilog-mode "verilog-mode" "verilog mode" t)
+;; TODO状態
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "WAIT(w)" "|" "DONE(d)" "SOMEDAY(s)")))
 
-;; Any files that end in .v should be in velilog mode
-(setq auto-mode-alist (cons '("\\.v\\'" . verilog-mode) auto-mode-alist))
+;; DONEの時刻を記録
+(setq org-log-done 'time)
 
-;; Any files in verilog mode should have their keywords colorized
-(add-hook 'verilog-mode-hook '(lambda () (font-look-mode 1)))
+;; ;; --------------------------------------------------
+;; ;; verilog-mode
+;; ;; VerilogHDL(.vファイル)
 
-(add-hook 'verilog-mode-hook '(lambda ()
-         (add-hook 'local-write-file-hooks
-	 (lambda() (untabify (point-min) (point-max))))))
+;; ;; Load verilog-mode only when needed
+;; (autoload 'verilog-mode "verilog-mode" "verilog mode" t)
+
+;; ;; Any files that end in .v should be in velilog mode
+;; (setq auto-mode-alist (cons '("\\.v\\'" . verilog-mode) auto-mode-alist))
+
+;; ;; Any files in verilog mode should have their keywords colorized
+;; (add-hook 'verilog-mode-hook '(lambda () (font-look-mode 1)))
+
+;; ;; (add-hook 'verilog-mode-hook '(lambda ()
+;; ;;          (add-hook 'local-write-file-hooks
+;; ;; (lambda() (untabify (point-min) (point-max))))))
 
 ;; --------------------------------------------------
 ;; C# mode
@@ -361,8 +383,8 @@
 
 ;;--------------------------------------------------
 ;; mmm-mode (html-helper-modeとphp-modeの協調動作)
-;; @note .phpファイルないの<?php - ?>内はphp-modeで
-;;       それ以外はhtml-helper-modeで処理される
+;; @note .phpファイルないの<?php - ?>内はphp-modeで
+;;       それ以外はhtml-helper-modeで処理される
 
 (require 'mmm-mode)
 (setq mmm-global-mode 'maybe)
@@ -389,7 +411,7 @@
 (defalias 'perl-mode 'cperl-mode)
 (setq auto-mode-alist (cons '("\\.t$" . cperl-mode) auto-mode-alist))
 
-; インデントの設定
+; インデントの設定
 (add-hook 'cperl-mode-hock
           '(lambda ()
              (cperl-set-style "PerlStyle")))
@@ -410,7 +432,7 @@
 ;; YaTeX (LaTeX)
 ;; .texファイル
 
-;; エンコーディングをutf-8にする
+;; エンコーディングをutf-8にする
 (setq YaTeX-kanji-code 4)
 
 (add-to-list 'load-path "~/.emacs.d/site-lisp/yatex")
