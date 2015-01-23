@@ -114,13 +114,8 @@
                         (count-lines (point-max) (point-min))))))
 
 
-;; 行末の余計なスペースのハイライト表示
-(setq-default show-trailing-whitespace t)
-(add-hook 'font-lock-mode-hook
-          (lambda()
-            (font-lock-add-keywords
-             nil
-             '(("\t" 0 'trailing-whitespace prepend)))))
+;; 行末の余計なスペースを保存時に削除
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; カラーテーマ
 ;; http://code/google/com/p/gnuemacscolorthemetest/
