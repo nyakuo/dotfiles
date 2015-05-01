@@ -9,7 +9,7 @@
 (require 'cl)
 
 ;; ローカル設定を読み込む
-(load "local_setting")
+;;(load "local_setting")
 
 ;; wind_moveの有効
 (load "wind_move")
