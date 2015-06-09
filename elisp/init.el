@@ -1,3 +1,7 @@
+;; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+;; 濁点が分離した場合
+;; 全体に対して usc-normalize-NFC-region
+;; !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 ;; --------------------------------------------------
 ;; 基本設定
 
@@ -5,7 +9,7 @@
 (require 'cl)
 
 ;; ローカル設定を読み込む
-(load "local_setting")
+;;(load "local_setting")
 
 ;; wind_moveの有効
 (load "wind_move")
@@ -21,9 +25,7 @@
 
 ;; タブ幅の指定
 (setq-default tab-width 2)
-(setq default-tab-width 2)
-(setq tab-stop-list
-      '(2 4 6 8 10 12 14 16 18 20 22 24))
+(setq tab-stop-list '(2 4 6 8 10 12 14 16 18 20 22 24))
 
 ;; バックアップファイルを作らない
 (setq make-backup-files nil)
@@ -47,9 +49,6 @@
 (cua-mode t)
 (setq cua-enable-cua-keys nil)
 
-;; M-y: anything-show-kill-ring
-(define-key global-map "\M-y" 'anything-show-kill-ring)
-
 ;; C-t: ウィンドウの切り替え (本来はtranspose-chars)
 (define-key global-map "\C-t" 'other-window)
 
@@ -68,9 +67,9 @@
 
 ;; 日本語入力のON/OFFでカーソルの色を変える
 (add-hook 'mw32-ime-on-hook
-	  (function(lambda() (set-cursor-color "Pink"))))
+          (function(lambda() (set-cursor-color "Pink"))))
 (add-hook 'wm32-ime-off-hook
-	  (function(lambda() (set-cursor-color "Green"))))
+          (function(lambda() (set-cursor-color "Green"))))
 
 ;; タイトルバーにファイルのフルパスを表示
 (setq frame-title-format
@@ -79,9 +78,12 @@
 ;; 行番号の表示
 (global-linum-mode t)
 (set-face-attribute 'linum nil
-		    :foreground "Green"
-		    :background "Black"
-		    :height 0.9)
+                    :foreground "Green"
+                    :background "Black"
+                    :height 0.9)
+(setq linum-delay t)
+(defadvice linum-schedule (around my-linum-schedule () activate)
+  (run-with-idle-timer 0.2 nil #'linum-update-current))
 
 ;; 行間
 (setq-default line-spacing 0)
@@ -110,6 +112,10 @@
   (setq mode-line-position
         '(:eval (format my-mode-line-format
                         (count-lines (point-max) (point-min))))))
+
+
+;; 行末の余計なスペースを保存時に削除
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; カラーテーマ
 ;; http://code/google/com/p/gnuemacscolorthemetest/
@@ -154,6 +160,16 @@
 
 ;; 背景の透過
 (set-frame-parameter nil 'alpha 85)
+
+;; マウスホイールでスクロール
+(defun scroll-down-with-lines ()
+  "" (interactive) (scroll-down 1))
+(defun scroll-up-with-lines ()
+   "" (interactive) (scroll-up 1))
+(global-set-key [wheel-up] 'scroll-down-with-lines)
+(global-set-key [wheel-down] 'scroll-up-with-lines)
+;; スクロールステップ 1 に設定
+(setq scroll-step 1)
 
 ;; --------------------------------------------------
 ;; auto-install
@@ -204,6 +220,19 @@
 ;; --------------------------------------------------
 ;; Anything (候補選択型インタフェース)
 
+;; C-; Anything呼び出しのキーバインドの設定
+(define-key global-map (kbd "C-;") 'anything)
+
+;; M-y kill-ring(コピペバッファ)の表示
+(define-key global-map "\M-y" 'anything-show-kill-ring)
+
+;; Anything呼び出しで表示する情報
+(setq anything-sources
+      '(anything-c-source-buffers+
+        anything-c-source-recentf
+        anything-c-source-files-in-current-dir
+        ))
+
 (when (require 'anything nil t)
   (setq
    ;; 候補を表示するまでの時間
@@ -244,21 +273,80 @@
   (descbinds-anything-install)))
 
 ;; --------------------------------------------------
-;; verilog-mode 
-;; VerilogHDL(.vファイル)
+;; hs-minor-mode
+;; C-\でソースコードを畳む
 
-;; Load verilog-mode only when needed
-(autoload 'verilog-mode "verilog-mode" "verilog mode" t)
+(add-hook 'c-mode-hook
+          '(lambda ()
+             (hs-minor-mode 1)))
+(add-hook 'c++-mode-hook
+          '(lambda ()
+             (hs-minor-mode 1)))
+(add-hook 'csharp-mode-hook
+          '(lambda ()
+             (hs-minor-mode 1)))
+(add-hook 'ruby-mode-hook
+          '(lambda ()
+             (hs-minor-mode 1)))
+(add-hook 'verilog-mode-hook
+          '(lambda ()
+             (hs-minor-mode 1)))
+(add-hook 'f90-mode-hook
+          '(lambda ()
+             (hs-minor-mode 1)))
+(add-hook 'java-mode-hook
+          '(lambda ()
+             (hs-minor-mode 1)))
+(add-hook 'php-mode-hook
+          '(lambda ()
+             (hs-minor-mode 1)))
+(add-hook 'emacs-lisp-mode-hook
+          '(lambda ()
+             (hs-minor-mode 1)))
+(add-hook 'html-mode-hook
+          '(lambda ()
+             (hs-minor-mode 1)))
+(add-hook 'sgml-mode-hook
+          '(lambda ()
+             (hs-minor-mode 1)))
+(add-hook 'cperl-mode-hook
+          '(lambda ()
+             (hs-minor-mode 1)))
+(add-hook 'js2-mode-hook
+          '(lambda ()
+             (hs-minor-mode 1)))
+(add-hook 'yatex-mode-hook
+          '(lambda ()
+             (hs-minor-mode 1)))
 
-;; Any files that end in .v should be in velilog mode
-(setq auto-mode-alist (cons '("\\.v\\'" . verilog-mode) auto-mode-alist))
+(define-key global-map (kbd "C-\\") 'hs-toggle-hiding)
 
-;; Any files in verilog mode should have their keywords colorized
-(add-hook 'verilog-mode-hook '(lambda () (font-look-mode 1)))
+;; --------------------------------------------------
+;; org-mode (.orgファイル)
 
-(add-hook 'verilog-mode-hook '(lambda ()
-         (add-hook 'local-write-file-hooks
-	 (lambda() (untabify (point-min) (point-max))))))
+;; TODO状態
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "WAIT(w)" "|" "DONE(d)" "SOMEDAY(s)")))
+
+;; DONEの時刻を記録
+(setq org-log-done 'time)
+
+;; ;; --------------------------------------------------
+;; ;; verilog-mode
+;; ;; VerilogHDL(.vファイル)
+
+;; ;; Load verilog-mode only when needed
+;; (autoload 'verilog-mode "verilog-mode" "verilog mode" t)
+
+;; ;; Any files that end in .v should be in velilog mode
+;; (setq auto-mode-alist (cons '("\\.v\\'" . verilog-mode) auto-mode-alist))
+
+;; ;; Any files in verilog mode should have their keywords colorized
+;; (add-hook 'verilog-mode-hook '(lambda () (font-look-mode 1)))
+
+;; ;; (add-hook 'verilog-mode-hook '(lambda ()
+;; ;;          (add-hook 'local-write-file-hooks
+;; ;; (lambda() (untabify (point-min) (point-max))))))
 
 ;; --------------------------------------------------
 ;; C# mode
@@ -280,15 +368,6 @@
         nil
         hs-c-like-adjust-block-beginning)
       hs-special-modes-alist)
-
-;; --------------------------------------------------
-;; html-helper-mode (HTML)
-;; .html
-
-(autoload 'html-helper-mode "html-helper-mode" "Yay HTML" t)
-(add-to-list 'auto-mode-alist '("\\.html$"  . html-helper-mode))
-(add-to-list 'auto-mode-alist '("\\.htm"    . html-helper-mode))
-(add-to-list 'auto-mode-alist '("\\.shtml$" . html-helper-mode))
 
 ;; --------------------------------------------------
 ;; php-mode (PHP)
