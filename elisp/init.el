@@ -159,7 +159,7 @@
 (setq hl-line-face 'underline)
 
 ;; 背景の透過
-(set-frame-parameter nil 'alpha 85)
+;;(set-frame-parameter nil 'alpha 85)
 
 ;; マウスホイールでスクロール
 (defun scroll-down-with-lines ()
@@ -231,6 +231,7 @@
       '(anything-c-source-buffers+
         anything-c-source-recentf
         anything-c-source-files-in-current-dir
+        anything-c-source-emacs-commands
         ))
 
 (when (require 'anything nil t)
@@ -545,3 +546,15 @@
              (reftex-mode 1)
              (define-key reftex-mode-map (concat YaTeX-prefix ">") 'YaTeX-comment-region)
              (define-key reftex-mode-map (concat YaTeX-prefix "<") 'YaTeX-uncomment-region)))
+
+
+;;---------------------------------------------------------------------
+;; emmet-mode Zen-Coding
+;;
+
+(require 'emmet-mode)
+(add-hook 'sgml-mode-hook 'emmet-mode)
+(add-hook 'css-mode-hook  'emmet-mode)       ; 自動起動
+(add-hook 'emmet-mode-hook
+    (lambda () (setq emmet-indentation 2)))  ; インデントの設定
+(setq emmet-move-cursor-between-quotes t)    ; カーソルの自動移動
