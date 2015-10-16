@@ -172,6 +172,17 @@
 (setq scroll-step 1)
 
 ;; --------------------------------------------------
+;; mozc-mode
+;;
+(let ((ws window-system))
+  (cond ((eq ws 'x)
+         (require 'mozc)
+         (set-language-environment "Japanese")
+         (setq default-input-method "japanese-mozc")
+         (global-set-key (kbd "C-u") `mozc-mode))))
+
+
+;; --------------------------------------------------
 ;; auto-install
 ;; Elispインストール支援
 
