@@ -232,7 +232,7 @@ fileviewer *.[1-8] man ./%c | col -b
 " Images
 filetype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm, eog
 fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
-         \ identify %f
+         \ img2txt %c
 
 " OpenRaster
 filextype *.ora
