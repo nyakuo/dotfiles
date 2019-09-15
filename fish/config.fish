@@ -9,15 +9,11 @@ end
 if test -f /Applications/MacVim.app/Contents/MacOS/Vim
   alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim '
   alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim '
+  alias mvim='/Applications/MacVim.app/Contents/bin/mvim'
+  alias macvim='mvim'
 end
-alias vi='vim'
-alias mvim='/Applications/MacVim.app/Contents/bin/mvim'
-alias macvim='mvim'
 
-# Typora の設定
-if test -f /Applications/Typora.app/Contents/MacOS/Typora
-  alias typora='open -a /Applications/Typora.app/Contents/MacOS/Typora'
-end
+alias vi='vim'
 
 # alias の設定
 alias up='cd ..'
