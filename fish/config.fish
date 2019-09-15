@@ -57,6 +57,9 @@ setxkbmap -option ctrl:swapcaps
 # 多ボタンマウスを機能させる
 easystroke enable
 
+# ssh-agent の評価
+eval (ssh-agent -c)
+
 # start X at login
 if status --is-login
   if test -z "$DISPLAY" -a $XDG_VTNR = 1
