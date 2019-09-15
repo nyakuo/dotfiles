@@ -19,13 +19,12 @@ alias vi='vim'
 alias up='cd ..'
 alias upup='up;up'
 alias tree='tree -N' # 文字化けtaisaku
-alias l='ls' # typo 対策
 alias gd='git diff --color-words'
+alias l='ls' # typo 対策
+alias sl='ls'
 
 # ls の着色
-alias ls='ls -G'
-alias sl='ls'
-export LSCOLORS=xbfxcxdxbxegedabagacad
+alias ls='ls --color=auto'
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/usr/local/bin/google-cloud-sdk/path.fish.inc' ]; . '/usr/local/bin/google-cloud-sdk/path.fish.inc'; end
