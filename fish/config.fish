@@ -51,7 +51,11 @@ set __fish_git_prompt_char_stashstate '↩'
 set __fish_git_prompt_char_upstream_ahead '+'
 set __fish_git_prompt_char_upstream_behind '-'
 
+# ctrl caps の入れ替え
 setxkbmap -option ctrl:swapcaps
+
+# 多ボタンマウスを機能させる
+easystroke enable
 
 # start X at login
 if status --is-login
