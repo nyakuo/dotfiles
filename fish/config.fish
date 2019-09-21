@@ -1,8 +1,6 @@
 # tmux の自動起動
 if test -z $TMUX
-#  if test $TERM_PROGRAM != "vscode"
   tmux new-session
-#  end
 end
 
 # MacVim のための設定
@@ -55,9 +53,6 @@ setxkbmap -option ctrl:swapcaps
 
 # 多ボタンマウスを機能させる
 easystroke enable
-
-# ssh-agent の評価
-eval (ssh-agent -c)
 
 # start X at login
 if status --is-login
