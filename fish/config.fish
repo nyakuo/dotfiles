@@ -20,6 +20,7 @@ alias tree='tree -N' # 文字化けtaisaku
 alias gd='git diff --color-words'
 alias l='ls' # typo 対策
 alias sl='ls'
+alias pbcopy='xsel --clipboard --input'
 
 # ls の着色
 alias ls='ls --color=auto'
