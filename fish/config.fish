@@ -3,20 +3,10 @@ if test -z $TMUX
   tmux new-session
 end
 
-# MacVim のための設定
-if test -f /Applications/MacVim.app/Contents/MacOS/Vim
-  alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim '
-  alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim '
-  alias mvim='/Applications/MacVim.app/Contents/bin/mvim'
-  alias macvim='mvim'
-end
-
-alias vi='vim'
-
 # alias の設定
 alias up='cd ..'
 alias upup='up;up'
-alias tree='tree -N' # 文字化けtaisaku
+alias tree='tree -N' # 文字化け対策
 alias gd='git diff --color-words'
 alias l='ls' # typo 対策
 alias sl='ls'
@@ -49,15 +39,29 @@ set __fish_git_prompt_char_stashstate '↩'
 set __fish_git_prompt_char_upstream_ahead '+'
 set __fish_git_prompt_char_upstream_behind '-'
 
-# ctrl caps の入れ替え
-setxkbmap -option ctrl:swapcaps
+# --- Mac 固有の設定
+if test (uname) = Darwin
+  # MacVim のための設定
+  if test -f /Applications/MacVim.app/Contents/MacOS/Vim
+    alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim '
+    alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim '
+    alias mvim='/Applications/MacVim.app/Contents/bin/mvim'
+    alias macvim='mvim'
+  end
+end
 
-# 多ボタンマウスを機能させる
-easystroke enable
+# --- Linux 固有の設定
+if uname -a | grep 'Linux' > /dev/null
+  # ctrl caps の入れ替え
+  setxkbmap -option ctrl:swapcaps
 
-# start X at login
-if status --is-login
-  if test -z "$DISPLAY" -a $XDG_VTNR = 1
-    exec startx -- -keeptty
+  # 多ボタンマウスを機能させる
+  easystroke enable
+
+  # start X at login
+  if status --is-login
+    if test -z "$DISPLAY" -a $XDG_VTNR = 1
+      exec startx -- -keeptty
+    end
   end
 end
