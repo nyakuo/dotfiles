@@ -12,9 +12,6 @@ alias l='ls' # typo 対策
 alias sl='ls'
 alias pbcopy='xsel --clipboard --input'
 
-# ls の着色
-alias ls='ls --color=auto'
-
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/usr/local/bin/google-cloud-sdk/path.fish.inc' ]; . '/usr/local/bin/google-cloud-sdk/path.fish.inc'; end
 
@@ -48,6 +45,9 @@ if test (uname) = Darwin
     alias mvim='/Applications/MacVim.app/Contents/bin/mvim'
     alias macvim='mvim'
   end
+
+  # ls の着色
+  alias ls='ls -G'
 end
 
 # --- Linux 固有の設定
@@ -64,4 +64,7 @@ if uname -a | grep 'Linux' > /dev/null
       exec startx -- -keeptty
     end
   end
+
+  # ls の着色
+  alias ls='ls --color=auto'
 end
