@@ -10,7 +10,6 @@ alias tree='tree -N' # 文字化け対策
 alias gd='git diff --color-words'
 alias l='ls' # typo 対策
 alias sl='ls'
-alias pbcopy='xsel --clipboard --input'
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/usr/local/bin/google-cloud-sdk/path.fish.inc' ]; . '/usr/local/bin/google-cloud-sdk/path.fish.inc'; end
@@ -52,6 +51,9 @@ end
 
 # --- Linux 固有の設定
 if uname -a | grep 'Linux' > /dev/null
+  # pbcopy の定義
+  alias pbcopy='xsel --clipboard --input'
+
   # ctrl caps の入れ替え
   setxkbmap -option ctrl:swapcaps
 
