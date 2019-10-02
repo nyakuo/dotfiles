@@ -8,3 +8,6 @@
   stl = !git stash list | fzf --preview 'echo {} | grep -o stash@{.*} | xargs git stash show -p --color=always' --height 90% | grep -o stash@{.*}
   sta = !git stl | xargs git stash apply
   std = !git stl | xargs git stash drop
+  s   = !git status
+  b   = !git branch
+
