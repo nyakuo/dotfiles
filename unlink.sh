@@ -10,4 +10,5 @@ unlink ~/.tmux.conf
 unlink ~/.git_alias
 unlink ~/.config/vifm/vifmrc
 unlink ~/.xinitrc
+unlink ~/.config/fontconfig/fonts.conf
 
