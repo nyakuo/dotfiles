@@ -39,9 +39,6 @@ if uname -a | grep 'Linux' > /dev/null
   # ctrl caps の入れ替え
   setxkbmap -option ctrl:swapcaps
 
-  # 多ボタンマウスを機能させる
-  easystroke enable
-
   # start X at login
   if status --is-login
     if test -z "$DISPLAY" -a $XDG_VTNR = 1
