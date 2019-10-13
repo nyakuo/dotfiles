@@ -11,3 +11,4 @@ ln -s ${DIR}/fish/fish_prompt.fish ~/.config/fish/functions/fish_prompt.fish
 ln -s ${DIR}/tmux/tmux.conf ~/.tmux.conf
 ln -s ${DIR}/git/git_alias ~/.git_alias
 ln -s ${DIR}/vifm/vifmrc ~/.config/vifm/vifmrc
+ln -s ${DIR}/xinitrc ~/.xinitrc
