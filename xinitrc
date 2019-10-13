@@ -15,6 +15,6 @@ unclutter --timeout 1 &
 session=${1:-awesome}
 
 # 多ボタンマウスを機能させる
-easystroke enable
+easystroke enable &
 
 exec awesome
