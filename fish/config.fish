@@ -35,6 +35,8 @@ end
 if uname -a | grep 'Linux' > /dev/null
   # pbcopy の定義
   alias pbcopy='xsel --clipboard --input'
+  # pbpaste の定義
+  alias pbpaste='xclip -selection clipboard -o'
 
   # ctrl caps の入れ替え
   setxkbmap -option ctrl:swapcaps
