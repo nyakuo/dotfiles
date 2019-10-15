@@ -17,4 +17,7 @@ session=${1:-awesome}
 # 多ボタンマウスを機能させる
 easystroke enable &
 
+# Keyboard のリピート開始及び速度を変更
+xset r rate 200 30
+
 exec awesome
