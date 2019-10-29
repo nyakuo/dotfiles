@@ -8,8 +8,10 @@ alias up='cd ..'
 alias upup='up;up'
 alias tree='tree -N' # 文字化け対策
 alias gd='git diff --color-words'
+alias ls='ls -1'
 alias l='ls' # typo 対策
 alias sl='ls'
+alias k='kubectl'
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/usr/local/bin/google-cloud-sdk/path.fish.inc' ]; . '/usr/local/bin/google-cloud-sdk/path.fish.inc'; end
