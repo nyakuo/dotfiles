@@ -102,7 +102,7 @@ set clipboard+=unnamed
 " Backspace で改行も削除できるように
 set backspace=2
 " viminfo ファイルの出力先を変更
-set viminfo+=n{/tmp}
+set viminfo=
 
 " 見た目系
 " 行番号を表示
