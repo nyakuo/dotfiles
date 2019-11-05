@@ -12,6 +12,7 @@ alias ls='ls -1'
 alias l='ls' # typo 対策
 alias sl='ls'
 alias k='kubectl'
+alias g='git'
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/usr/local/bin/google-cloud-sdk/path.fish.inc' ]; . '/usr/local/bin/google-cloud-sdk/path.fish.inc'; end
