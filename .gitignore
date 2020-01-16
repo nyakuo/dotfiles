@@ -6,3 +6,5 @@ wget-log*
 
 *.elc
 elisp/*.elc
+
+fish/extra_settings
