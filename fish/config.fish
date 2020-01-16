@@ -13,6 +13,7 @@ alias l='ls' # typo 対策
 alias sl='ls'
 alias k='kubectl'
 alias g='git'
+alias python='python3'
 
 source ~/.config/fish/extra_settings
 
