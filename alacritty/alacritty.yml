@@ -1,0 +1,50 @@
+font:
+  normal:
+    family: Ricty
+    style: Regular
+
+  bold:
+    family: Ricty
+    style: Bold
+
+  italic:
+    family: Ricty
+    style: Italic
+
+  bold_italic:
+    family: Ricty
+    style: Bold Italic
+
+
+colors:
+  # Default colors
+  primary:
+    background: '0x131313'
+    foreground: '0xd6dbe5'
+
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  cursor:
+    text: '0x1f1f1f'
+    cursor: '0x4e5ab7'
+
+  # Normal colors
+  normal:
+    black:   '0x1f1f1f'
+    red:     '0xf81118'
+    green:   '0x2dc55e'
+    yellow:  '0xecba0f'
+    blue:    '0x2a84d2'
+    magenta: '0x4e5ab7'
+    cyan:    '0x1081d6'
+    white:   '0xd6dbe5'
+
+  # Bright colors
+  bright:
+    black:   '0xd6dbe5'
+    red:     '0xde352e'
+    green:   '0x1dd361'
+    yellow:  '0xf3bd09'
+    blue:    '0x1081d6'
+    magenta: '0x5350b9'
+    cyan:    '0x0f7ddb'
+    white:   '0xffffff'
