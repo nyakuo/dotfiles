@@ -13,6 +13,9 @@ alias l='ls' # typo 対策
 alias sl='ls'
 alias k='kubectl'
 alias g='git'
+alias python='python3'
+
+source ~/.config/fish/extra_settings
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/usr/local/bin/google-cloud-sdk/path.fish.inc' ]; . '/usr/local/bin/google-cloud-sdk/path.fish.inc'; end
@@ -32,6 +35,9 @@ if test (uname) = Darwin
 
   # ls の着色
   alias ls='ls -G'
+
+  # Verilator の Include PATH を追加
+  set PATH /usr/local/Cellar/verilator/4.020/share/verilator/include/  $PATH
 end
 
 # --- Linux 固有の設定
