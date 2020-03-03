@@ -15,6 +15,10 @@ font:
     family: Ricty
     style: Bold Italic
 
+key_bindings:
+  - { key: Q,        mods: Control, chars: "\x11"                        }
+  - { key: F,        mods: Alt,     chars: "\x1bf"                       }
+  - { key: B,        mods: Alt,     chars: "\x1bb"                       }
 
 # Brogrammer Teheme
 colors:
