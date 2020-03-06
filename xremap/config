@@ -1,0 +1,29 @@
+window class_not: 'urxvt' do
+  remap 'C-b', to: 'Left'
+  remap 'C-f', to: 'Right'
+  remap 'C-p', to: 'Up'
+  remap 'C-n', to: 'Down'
+
+  remap 'M-b', to: 'Ctrl-Left'
+  remap 'M-f', to: 'Ctrl-Right'
+
+  remap 'C-a', to: 'Home'
+  remap 'C-e', to: 'End'
+
+  remap 'C-k', to: ['Shift-End', 'Ctrl-x']
+
+  remap 'C-d', to: 'Delete'
+  remap 'M-d', to: 'Ctrl-Delete'
+  remap 'C-h', to: 'BackSpace'
+end
+
+
+%w[a z x c v w t].each do |key|
+  remap "Alt-#{key}", to: "C-#{key}"
+end
+
+window class_only: 'google-chrome' do
+  remap 'Alt-h', to: 'Ctrl-h'
+  remap 'Alt-n', to: 'Ctrl-n'
+  remap 'Alt-f', to: 'Ctrl-f'
+end
