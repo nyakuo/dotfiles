@@ -14,6 +14,7 @@ alias sl='ls'
 alias k='kubectl'
 alias g='git'
 alias python='python3'
+alias pip='pip3'
 
 source ~/.config/fish/extra_settings
 
