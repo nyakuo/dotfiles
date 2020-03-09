@@ -13,7 +13,6 @@ alias l='ls' # typo 対策
 alias sl='ls'
 alias k='kubectl'
 alias g='git'
-alias python='python3'
 alias pip='pip3'
 alias vim='nvim'
 
@@ -27,6 +26,11 @@ if [ -f '/usr/local/bin/google-cloud-sdk/path.fish.inc' ]; . '/usr/local/bin/goo
 
 # Go のバイナリの PATH を追加
 set PATH ~/go/bin $PATH
+
+# pyenv の設定
+set PYENV_ROOT $HOME/.pyenv
+set PATH $PYENV_ROOT/bin $PATH
+eval (pyenv init - | source)
 
 # --- Mac 固有の設定
 if test (uname) = Darwin
