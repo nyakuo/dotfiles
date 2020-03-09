@@ -18,8 +18,8 @@ alias vim='nvim'
 
 source ~/.config/fish/extra_settings
 
-export LANG=ja_JP.UTF-8
-export LC_CTYPE=ja_JP.UTF-8
+set LANG ja_JP.UTF-8
+set LC_CTYPE ja_JP.UTF-8
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/usr/local/bin/google-cloud-sdk/path.fish.inc' ]; . '/usr/local/bin/google-cloud-sdk/path.fish.inc'; end
