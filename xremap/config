@@ -12,7 +12,6 @@ window class_not: 'urxvt' do
 
   remap 'C-k', to: ['Shift-End', 'Ctrl-x']
 
-  remap 'C-d', to: 'Delete'
   remap 'M-d', to: 'Ctrl-Delete'
   remap 'C-h', to: 'BackSpace'
 end
@@ -26,4 +25,5 @@ window class_only: 'google-chrome' do
   remap 'Alt-h', to: 'Ctrl-h'
   remap 'Alt-n', to: 'Ctrl-n'
   remap 'Alt-f', to: 'Ctrl-f'
+  remap 'C-d',   to: 'Delete'
 end
