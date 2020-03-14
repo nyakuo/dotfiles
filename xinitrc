@@ -5,6 +5,9 @@ export XMODIFIERS=@im=fcitx
 export DefaultIMModule=fcitx
 fcitx &
 
+# xremap の起動
+xremap ~/.config/xremap/config &
+
 # SPDIF出力を有効に
 amixer -c 0 cset name='IC958 Default PCM' on
 
