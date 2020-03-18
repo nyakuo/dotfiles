@@ -35,9 +35,7 @@ eval (pyenv init - | source)
 # --- Mac 固有の設定
 if test (uname) = Darwin
   # MacVim のための設定
-  if test -f /Applications/MacVim.app/Contents/MacOS/Vim
-    alias vi='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim '
-    alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim '
+  if test -f /Applications/MacVim.app/Contents/bin/mvim
     alias mvim='/Applications/MacVim.app/Contents/bin/mvim'
     alias macvim='mvim'
   end
