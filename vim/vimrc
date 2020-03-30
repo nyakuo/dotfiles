@@ -20,6 +20,7 @@ call neobundle#begin(expand('~/.vim/bundle/'))
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 " 追加したいVimプラグインを記述
+NeoBundle 'vim-scripts/gtags.vim'
 NeoBundle "ctrlpvim/ctrlp.vim"
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'ntpeters/vim-better-whitespace'
