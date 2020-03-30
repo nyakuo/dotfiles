@@ -10,4 +10,5 @@
   std = !git stl | xargs git stash drop
   s   = !git status
   b   = !git branch
+  unstage = '!git reset HEAD --
 
