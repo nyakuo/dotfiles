@@ -21,17 +21,14 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " 追加したいVimプラグインを記述
 NeoBundle 'vim-scripts/gtags.vim'
-NeoBundle "ctrlpvim/ctrlp.vim"
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'ntpeters/vim-better-whitespace'
 NeoBundle 'Yggdroot/indentline'
 NeoBundle 'nachumk/systemverilog.vim'
-NeoBundle 'kannokanno/previm'
 NeoBundle 'tyru/open-browser.vim'
 NeoBundle 'junegunn/vim-easy-align'
 NeoBundle 'haya14busa/vim-migemo'
 NeoBundle 'szw/vim-tags'
-NeoBundle 'rking/ag.vim'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'gmist/vim-palette'
 NeoBundle 'ConradIrwin/vim-bracketed-paste'
@@ -87,8 +84,6 @@ set background=dark
 " setting
 " syntax higilighting の1行あたりの最大解析文字数を200に制限
 set synmaxcol=200
-"文字コードをUFT-8に設定
-set fenc=utf-8
 " バックアップファイルを作らない
 set nobackup
 " スワップファイルを作らない
@@ -101,6 +96,7 @@ set hidden
 set showcmd
 " ヤンクした内容をクリップボードにコピー
 set clipboard+=unnamed
+lang en_US.UTF-8
 " Backspace で改行も削除できるように
 set backspace=2
 " viminfo ファイルの出力先を変更
@@ -170,3 +166,22 @@ imap OD <Left>
 " vim-easy-align のキーバインド
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
+
+" gtags のキーバインド
+map <C-g> :Gtags
+map <C-h> :Gtags -f %<CR>
+map <C-f> :GtagsCursor<CR>
+map <C-j> :cn<CR>
+map <C-k> :cp<CR>
+
+
+" 補完の選択中に挿入を実行しない
+" 補完が表示された際は1件目を選択状態にする
+set completeopt=menuone,noinsert
+
+" 補完表示時のEnterで改行をしない
+inoremap <expr><CR>  pumvisible() ? "<C-y>" : "<CR>"
+
+" 補完候補の選択を C-p, C-n で可能にする
+inoremap <expr><C-n> pumvisible() ? "<Down>" : "<C-n>"
+inoremap <expr><C-p> pumvisible() ? "<Up>" : "<C-p>"
