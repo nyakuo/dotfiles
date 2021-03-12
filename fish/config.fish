@@ -3,6 +3,9 @@ if test -z $TMUX
   tmux new-session
 end
 
+# fish のログインメッセージを空文字に
+set fish_greeting
+
 # alias の設定
 alias up='cd ..'
 alias upup='up;up'
