@@ -27,6 +27,9 @@ if [ -f '/usr/local/bin/google-cloud-sdk/path.fish.inc' ]; . '/usr/local/bin/goo
 # Go のバイナリの PATH を追加
 set PATH ~/go/bin $PATH
 
+# Homebrew の PATH を追加
+set PATH /opt/homebrew/bin $PATH
+
 # pyenv の設定
 set PYENV_ROOT $HOME/.pyenv
 set PATH $PYENV_ROOT/bin $PATH
