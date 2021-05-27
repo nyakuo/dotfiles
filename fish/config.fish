@@ -80,3 +80,6 @@ function fish_user_key_bindings
   bind \cr peco_select_history
 end
 
+# powerine font で git branch 名を表示する
+set -g theme_display_git_master_branch yes
+
