@@ -83,3 +83,5 @@ end
 # powerine font で git branch 名を表示する
 set -g theme_display_git_master_branch yes
 
+#ディレクトリ名を省略しない
+set -g fish_prompt_pwd_dir_length 0
