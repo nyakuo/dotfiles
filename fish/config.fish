@@ -18,6 +18,7 @@ alias k='kubectl'
 alias g='git'
 alias pip='pip3'
 alias vim='nvim'
+alias typora="open -a typora"
 
 source ~/.config/fish/extra_settings
 
