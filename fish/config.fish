@@ -74,3 +74,9 @@ if uname -a | grep 'Linux' > /dev/null
   # ls の着色
   alias ls='ls --color=auto'
 end
+
+# peco: history の検索プラグインのキー設定
+function fish_user_key_bindings
+  bind \cr peco_select_history
+end
+
