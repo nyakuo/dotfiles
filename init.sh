@@ -17,3 +17,4 @@ ln -s ${DIR}/fonts.conf ~/.config/fontconfig/fonts.conf
 ln -s ${DIR}/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
 ln -s ${DIR}/xremap/config ~/.config/xremap/config
 ln -s ${DIR}/emacs/init.el ~/.emacs.d/init.el
+ln -s ${DIR}/zsh/zshrc ~/.zshrc
