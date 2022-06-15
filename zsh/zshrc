@@ -7,9 +7,13 @@ fi
 
 alias vim=nvim
 alias ls='ls -G'
+alias code='code-insiders'
 
 # Homebrew の PATH 追加
 export PATH=/opt/homebrew/bin:$PATH
+
+# 補完の有効化
+autoload -U compinit && compinit
 
 # zplug
 export ZPLUG_HOME=/opt/homebrew/opt/zplug
