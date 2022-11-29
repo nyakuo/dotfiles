@@ -19,6 +19,9 @@ autoload -U compinit && compinit
 export ZPLUG_HOME=/opt/homebrew/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
+# gh コマンドのエディタを vim に変更
+export EDITOR=vim
+
 # zplug plugin
 ## テーマ
 zplug "romkatv/powerlevel10k", as:theme, depth:1
