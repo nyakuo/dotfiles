@@ -5,6 +5,9 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# zsh を emacs キーバインドで使う
+bindkey -e
+
 alias vim=nvim
 alias ls='ls --color=always'
 alias code='code-insiders'
@@ -50,3 +53,4 @@ fssh() {
 
     ssh ${sshLoginHost}
 }
+
