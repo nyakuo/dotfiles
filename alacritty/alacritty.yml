@@ -1,18 +1,19 @@
 font:
+  size: 14
   normal:
-    family: Ricty
+    family: Ricty Diminished Discord
     style: Regular
 
   bold:
-    family: Ricty
+    family: Ricty Diminished Discord
     style: Bold
 
   italic:
-    family: Ricty
+    family: Ricty Diminished Discord
     style: Italic
 
   bold_italic:
-    family: Ricty
+    family: Ricty Diminished Discord
     style: Bold Italic
 
 key_bindings:
