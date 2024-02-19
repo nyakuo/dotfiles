@@ -32,6 +32,7 @@ NeoBundle 'szw/vim-tags'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'gmist/vim-palette'
 NeoBundle 'ConradIrwin/vim-bracketed-paste'
+NeoBundle 'github/copilot.vim'
 if has('lua')
   NeoBundle 'Shougo/neocomplete.vim'
   NeoBundle 'Shougo/neosnippet'
