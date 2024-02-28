@@ -1,12 +1,14 @@
 #!/bin/sh
 #
 # 設定ファイルをシンボリックリンクで配置
+# tmux のプライグインマネージャ(TPM)を ~/.tmux/plugins/tpm にインストールする
 #########################################
 
 DIR=$(pwd)
 
 ln -s ${DIR}/neovim/vimrc ~/.config/nvim/init.vim
 ln -s ${DIR}/tmux/tmux.conf ~/.tmux.conf
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ln -s ${DIR}/git/git_alias ~/.git_alias
 ln -s ${DIR}/vifm/vifmrc ~/.config/vifm/vifmrc
 ln -s ${DIR}/xinitrc ~/.xinitrc
