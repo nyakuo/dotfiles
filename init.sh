@@ -7,6 +7,7 @@
 DIR=$(pwd)
 
 ln -s ${DIR}/neovim/vimrc ~/.config/nvim/init.vim
+ln -s ${DIR}/neovim/vimrc ~/.vimrc
 ln -s ${DIR}/tmux/tmux.conf ~/.tmux.conf
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ln -s ${DIR}/git/git_alias ~/.git_alias
