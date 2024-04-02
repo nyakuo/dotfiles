@@ -1,64 +1,58 @@
-font:
-  size: 14
-  normal:
-    family: Ricty Diminished Discord
-    style: Regular
-
-  bold:
-    family: Ricty Diminished Discord
-    style: Bold
-
-  italic:
-    family: Ricty Diminished Discord
-    style: Italic
-
-  bold_italic:
-    family: Ricty Diminished Discord
-    style: Bold Italic
-
-key_bindings:
-  - { key: Q,        mods: Control, chars: "\x11"                        }
-  - { key: F,        mods: Alt,     chars: "\x1bf"                       }
-  - { key: B,        mods: Alt,     chars: "\x1bb"                       }
-
-# Brogrammer Teheme
 colors:
-  # Default colors
+  bright:
+    black: '0xd6dbe5'
+    blue: '0x1081d6'
+    cyan: '0x0f7ddb'
+    green: '0x1dd361'
+    magenta: '0x5350b9'
+    red: '0xde352e'
+    white: '0xffffff'
+    yellow: '0xf3bd09'
+  cursor:
+    cursor: '0x08ff00'
+    text: '0x1f1f1f'
+  normal:
+    black: '0x1f1f1f'
+    blue: '0x2a84d2'
+    cyan: '0x1081d6'
+    green: '0x2dc55e'
+    magenta: '0x4e5ab7'
+    red: '0xf81118'
+    white: '0xd6dbe5'
+    yellow: '0xecba0f'
   primary:
     background: '0x131313'
     foreground: '0xd6dbe5'
-
-  # Colors the cursor will use if `custom_cursor_colors` is true
-  cursor:
-    text: '0x1f1f1f'
-    cursor: '0x4e5ab7'
-
-  # Normal colors
+cursor:
+  style:
+    blinking: Always
+    shape: Beam
+env:
+  TERM: xterm-256color
+font:
+  bold:
+    family: Ricty Diminished Discord
+    style: Bold
+  bold_italic:
+    family: Ricty Diminished Discord
+    style: Bold Italic
+  italic:
+    family: Ricty Diminished Discord
+    style: Italic
   normal:
-    black:   '0x1f1f1f'
-    red:     '0xf81118'
-    green:   '0x2dc55e'
-    yellow:  '0xecba0f'
-    blue:    '0x2a84d2'
-    magenta: '0x4e5ab7'
-    cyan:    '0x1081d6'
-    white:   '0xd6dbe5'
-
-  # Bright colors
-  bright:
-    black:   '0xd6dbe5'
-    red:     '0xde352e'
-    green:   '0x1dd361'
-    yellow:  '0xf3bd09'
-    blue:    '0x1081d6'
-    magenta: '0x5350b9'
-    cyan:    '0x0f7ddb'
-    white:   '0xffffff'
-
-# tmuxで起動する場合
+    family: Ricty Diminished Discord
+    style: Regular
+  size: 14
+keyboard:
+  bindings:
+  - chars: "\x11"
+    key: Q
+    mods: Control
+  - chars: "\ef"
+    key: F
+    mods: Alt
+  - chars: "\eb"
+    key: B
+    mods: Alt
 shell:
   program: /bin/zsh
-  args:
-    - -l
-    - -c
-    - "/opt/homebrew/bin/tmux a -t 0 || /opt/homebrew/bin/tmux -u"
