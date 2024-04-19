@@ -54,3 +54,24 @@ fssh() {
     ssh ${sshLoginHost}
 }
 
+## sshuttle で .ssh/config にあるホストに対して /32 のトンネルを作る
+fsshuttle() {
+    # `.ssh/config` からホスト名を抽出
+    local hosts=$(awk '/^Host / && !/\*/ {print $2}' ~/.ssh/config)
+
+    # fzf でホスト名を選択
+    local selected_host=$(echo "$hosts" | fzf --prompt='Select Host: ')
+
+    # 選択されたホストに SSH して IP アドレスを取得
+    # `HostName` パラメータが設定されている場合、それを使用
+    local ip_address=$(ssh -G $selected_host | awk '/^hostname / { print $2 }')
+
+    # sshuttle を使用してトンネルを掘る
+    if [[ -n "$ip_address" ]]; then
+        echo "Tunnel established to $selected_host ($ip_address)."
+        sshuttle -r $selected_host ${ip_address}/32
+    else
+        echo "IP address could not be determined for host $selected_host"
+    fi
+}
+
