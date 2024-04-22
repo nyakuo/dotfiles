@@ -51,6 +51,7 @@ fssh() {
         return 1
     fi
 
+    echo "ssh established to $sshLoginHost."
     ssh ${sshLoginHost}
 }
 
