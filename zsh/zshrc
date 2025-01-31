@@ -77,7 +77,7 @@ fsshuttle() {
     # sshuttle を使用してトンネルを掘る
     if [[ -n "$ip_address" ]]; then
         echo "Tunnel established to $selected_host ($ip_address)."
-        sshuttle -r $selected_host ${ip_address}/32
+        sshuttle -r ssh-gw ${ip_address}/32
     else
         echo "IP address could not be determined for host $selected_host"
     fi
