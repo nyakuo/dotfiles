@@ -83,3 +83,9 @@ fsshuttle() {
     fi
 }
 
+# git リポジトリのルートディレクトリに移動するコマンド
+function cdroot() {
+    cd "$(git rev-parse --show-toplevel)" || echo "Not a git repository."
+}
+
+export PATH="/opt/homebrew/opt/unzip/bin:$PATH"
