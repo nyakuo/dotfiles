@@ -15,6 +15,10 @@ bindkey '\e[3~' delete-char
 alias vim=nvim
 alias code='code-insiders'
 
+# コマンドの色付け
+alias ls='ls --color=always -l1'
+alias tree='tree -C'
+
 # Homebrew の PATH 追加
 export PATH=/opt/homebrew/bin:$PATH
 
