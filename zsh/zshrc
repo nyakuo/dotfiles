@@ -8,6 +8,10 @@ fi
 # zsh を emacs キーバインドで使う
 bindkey -e
 
+# delete キーを ~ じゃなくて delete とする
+bindkey '\e[3~' delete-char
+
+# コマンド呼び出しのエイリアス設定
 alias vim=nvim
 alias ls='ls --color=always'
 alias code='code-insiders'
