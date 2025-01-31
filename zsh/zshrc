@@ -13,7 +13,6 @@ bindkey '\e[3~' delete-char
 
 # コマンド呼び出しのエイリアス設定
 alias vim=nvim
-alias ls='ls --color=always'
 alias code='code-insiders'
 
 # Homebrew の PATH 追加
