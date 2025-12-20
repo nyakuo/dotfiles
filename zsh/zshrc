@@ -1,91 +1,113 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# ============================================================
+# Powerlevel10k Instant Prompt (ファイルの最上部に配置必須)
+# ============================================================
+if [[ -r "${XDG_CACHE_HOME:-${HOME}/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+    source "${XDG_CACHE_HOME:-${HOME}/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# zsh を emacs キーバインドで使う
+# ============================================================
+# キーバインド設定
+# ============================================================
+# Emacs キーバインドを使用
 bindkey -e
 
-# delete キーを ~ じゃなくて delete とする
+# Delete キーを正しく機能させる
 bindkey '\e[3~' delete-char
 
-# コマンド呼び出しのエイリアス設定
+# ============================================================
+# エイリアス設定
+# ============================================================
+# エディタ
 alias vim=nvim
 alias code='code-insiders'
 
-# コマンドの色付け
+# カラー表示と便利なオプション
 alias ls='ls --color=always -l1'
 alias tree='tree -C'
 
-# Homebrew の PATH 追加
-export PATH=/opt/homebrew/bin:$PATH
+# ============================================================
+# 環境変数・PATH設定
+# ============================================================
+# Homebrew
+export PATH="/opt/homebrew/bin:${PATH}"
+export PATH="/opt/homebrew/opt/unzip/bin:${PATH}"
 
-# 補完の有効化
-autoload -U compinit && compinit
+# Nodebrew (Node.js バージョン管理)
+export PATH="${HOME}/.nodebrew/current/bin:${PATH}"
 
-# zplug
-export ZPLUG_HOME=/opt/homebrew/opt/zplug
-source $ZPLUG_HOME/init.zsh
+# pyenv (Python バージョン管理)
+export PYENV_ROOT="${HOME}/.pyenv"
+export PATH="${PYENV_ROOT}/bin:${PATH}"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
 
-# gh コマンドのエディタを vim に変更
+# エディタ設定
 export EDITOR=vim
 
-# zplug plugin
-## テーマ
-zplug "romkatv/powerlevel10k", as:theme, depth:1
+# ============================================================
+# Zsh 設定
+# ============================================================
+# 補完機能の有効化
+autoload -U compinit && compinit
 
-## シンタックスハイライト
-zplug "zsh-users/zsh-syntax-highlighting"
-zplug "chrissicool/zsh-256color"
+# ============================================================
+# zplug (プラグイン管理)
+# ============================================================
+export ZPLUG_HOME="/opt/homebrew/opt/zplug"
+source "${ZPLUG_HOME}/init.zsh"
+
+# プラグインの読み込み
+zplug "romkatv/powerlevel10k", as:theme, depth:1       # テーマ
+zplug "zsh-users/zsh-syntax-highlighting"              # シンタックスハイライト
+zplug "chrissicool/zsh-256color"                       # 256色対応
 
 zplug load
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# Powerlevel10k 設定ファイルの読み込み
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 
-# functions
-## ssh の接続先を fzf で選択
-## https://qiita.com/kamykn/items/9a831862038efa4e9f8f
+# ============================================================
+# カスタム関数
+# ============================================================
+
+# fzf で SSH 接続先を選択して接続
+# 参考: https://qiita.com/kamykn/items/9a831862038efa4e9f8f
 fssh() {
     local sshLoginHost
-    sshLoginHost=`cat ~/.ssh/config | grep -i ^host | awk '{print $2}' | fzf`
+    sshLoginHost=$(grep -i '^host' ~/.ssh/config | awk '{print $2}' | fzf)
 
-    if [ "$sshLoginHost" = "" ]; then
-        # ex) Ctrl-C.
+    if [[ -z "${sshLoginHost}" ]]; then
         return 1
     fi
 
-    echo "ssh established to $sshLoginHost."
-    ssh ${sshLoginHost}
+    echo "ssh established to ${sshLoginHost}."
+    ssh "${sshLoginHost}"
 }
 
-## sshuttle で .ssh/config にあるホストに対して /32 のトンネルを作る
+# fzf で選択したホストに sshuttle でトンネル接続 (/32)
 fsshuttle() {
-    # `.ssh/config` からホスト名を抽出
+    # .ssh/config からホスト名を抽出 (ワイルドカードを除く)
     local hosts=$(awk '/^Host / && !/\*/ {print $2}' ~/.ssh/config)
 
     # fzf でホスト名を選択
-    local selected_host=$(echo "$hosts" | fzf --prompt='Select Host: ')
+    local selected_host=$(echo "${hosts}" | fzf --prompt='Select Host: ')
 
-    # 選択されたホストに SSH して IP アドレスを取得
-    # `HostName` パラメータが設定されている場合、それを使用
-    local ip_address=$(ssh -G $selected_host | awk '/^hostname / { print $2 }')
+    [[ -z "${selected_host}" ]] && return 1
 
-    # sshuttle を使用してトンネルを掘る
-    if [[ -n "$ip_address" ]]; then
-        echo "Tunnel established to $selected_host ($ip_address)."
-        sshuttle -r ssh-gw ${ip_address}/32
+    # SSH設定から実際のIPアドレス(hostname)を取得
+    local ip_address=$(ssh -G "${selected_host}" | awk '/^hostname / {print $2}')
+
+    # sshuttle でトンネルを確立
+    if [[ -n "${ip_address}" ]]; then
+        echo "Tunnel established to ${selected_host} (${ip_address})."
+        sshuttle -r ssh-gw "${ip_address}/32"
     else
-        echo "IP address could not be determined for host $selected_host"
+        echo "IP address could not be determined for host ${selected_host}"
     fi
 }
 
-# git リポジトリのルートディレクトリに移動するコマンド
-function cdroot() {
+# Git リポジトリのルートディレクトリに移動
+cdroot() {
     cd "$(git rev-parse --show-toplevel)" || echo "Not a git repository."
 }
-
-export PATH="/opt/homebrew/opt/unzip/bin:$PATH"
